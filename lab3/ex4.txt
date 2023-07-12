@@ -1,0 +1,9 @@
+USE userdb;
+SELECT H.name, H.grade FROM Highschooler H
+WHERE H.ID NOT IN (
+	SELECT * FROM (
+		(SELECT Likes.ID1 FROM Likes)
+		UNION
+		(SELECT Likes.ID2 FROM Likes)
+	)partOfLove
+)

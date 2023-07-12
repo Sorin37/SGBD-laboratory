@@ -1,0 +1,6 @@
+\project_{name}
+((
+ (\select_{gender='female'} Person)\join Eats)
+ \join_{pizzeria2='Straw Hat' and pizza = pizza2}
+ (\rename_{pizzeria2, pizza2, price2} Serves)
+);

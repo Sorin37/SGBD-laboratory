@@ -1,0 +1,12 @@
+USE userdb;
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM Rating
+WHERE (Rating.rID, Rating.stars, Rating.ratingDate) IN
+(
+	SELECT * FROM
+	(
+		SELECT R.rID, R.stars, R.ratingDate FROM Rating R
+		INNER JOIN Movie M ON R.mID = M.mID
+		WHERE (M.year < 1970 OR M.year > 2000) AND R.stars < 4
+	)toBeDeleted
+)

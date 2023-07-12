@@ -1,0 +1,14 @@
+/*pizze mancate doar de persoane tinere*/
+(\project_{pizza}Eats
+	\diff
+\project_{pizza}(Eats \join_{name=young_name}
+	\rename_{young_name}(\project_{name}\select_{age > 23} Person)))
+\union
+(\project_{pizza}Serves
+\diff
+\project_{pizza}(
+ (\project_{pizzeria}Serves\cross\project_{pizza}Serves)
+ \diff
+ \project_{pizzeria, pizza}\select_{price<10}Serves)/*pizze mai ieftine de 10 dolari*/
+)
+;

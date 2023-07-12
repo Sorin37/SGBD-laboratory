@@ -1,0 +1,6 @@
+SELECT M.title, max(R.stars) - min(R.stars) AS ratingSpread
+FROM userdb.Movie M
+INNER JOIN userdb.Rating R ON M.mID = R.mID
+INNER JOIN userdb.Reviewer P ON P.rID = R.rID
+GROUP BY M.title
+ORDER BY ratingSpread DESC, M.title

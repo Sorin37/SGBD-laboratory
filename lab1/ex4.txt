@@ -1,0 +1,11 @@
+\project_{pizzeria}
+ (\project_{pizzeria, pizza}(\select_{price < 10 and (name2='Amy')}
+	(Serves \join_{pizza=pizza2} \rename_{name2, pizza2} Eats)
+ )
+ \join_{pizza=pizzaFay}
+ \rename_{pizzeriaFay, pizzaFay}
+ \project_{pizzeria, pizza}(\select_{price < 10 and (name2='Fay')}
+	(Serves \join_{pizza=pizza2} \rename_{name2, pizza2} Eats)
+ )
+)
+;

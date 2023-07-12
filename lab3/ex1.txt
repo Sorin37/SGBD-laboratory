@@ -1,0 +1,4 @@
+SELECT H.name FROM userdb.Highschooler H
+INNER JOIN userdb.Friend F ON F.ID1 = H.ID
+INNER JOIN userdb.Highschooler H2 ON F.ID2 = H2.ID
+WHERE H2.name = "Gabriel";

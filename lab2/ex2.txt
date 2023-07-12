@@ -1,0 +1,5 @@
+SELECT year
+FROM userdb.Movie INNER JOIN userdb.Rating
+ON userdb.Movie.mID = userdb.Rating.mID
+WHERE stars > 3
+GROUP BY year;

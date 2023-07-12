@@ -1,0 +1,36 @@
+USE userdb;
+SELECT * FROM
+(
+	SELECT pair1name.name, pair1name.grade FROM
+	(
+		SELECT * FROM
+			(
+			SELECT H1.grade, 
+					H1.name,
+					min(H2.grade) AS friendMin, 
+					max(H2.grade) AS friendMax
+			FROM Friend F
+			INNER JOIN Highschooler H1 ON F.ID1 = H1.ID
+			INNER JOIN Highschooler H2 ON F.ID2 = H2.ID
+			GROUP BY H1.grade, H1.name
+		) pair1
+		WHERE grade = friendMin AND friendMin = friendMax
+	)pair1name
+	UNION
+	SELECT pair2name.name, pair2name.grade FROM
+	(
+		SELECT * FROM
+		(
+			SELECT H2.grade, 
+				   H2.name,
+				   min(H1.grade) AS friendMin, 
+				   max(H1.grade) AS friendMax
+			FROM Friend F
+			INNER JOIN Highschooler H1 ON F.ID1 = H1.ID
+			INNER JOIN Highschooler H2 ON F.ID2 = H2.ID
+			GROUP BY H2.grade, H2.name
+		) pair2
+		WHERE grade = friendMin AND friendMin = friendMax
+	)pair2name
+)result
+ORDER BY result.grade, result.name

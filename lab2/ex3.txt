@@ -1,0 +1,2 @@
+SELECT title FROM userdb.Movie 
+WHERE mId NOT IN (SELECT mID FROM userdb.Rating);

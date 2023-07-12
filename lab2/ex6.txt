@@ -1,0 +1,9 @@
+SELECT DISTINCT name, title from userdb.Movie M
+INNER JOIN userdb.Rating R ON R.mID = M.mID
+INNER JOIN userdb.Reviewer P ON R.rID = P.rID
+WHERE R.rId IN 
+    ( SELECT R1.rID FROM userdb.Rating R1, userdb.Rating R2
+	  WHERE R1.mID = R2.mId AND 
+		    R1.rID = R2.rID AND 
+            R2.ratingDate > R1.ratingDate AND 
+            R2.stars > R1.stars);

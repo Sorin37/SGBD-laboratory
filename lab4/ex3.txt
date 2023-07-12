@@ -1,0 +1,8 @@
+USE userdb;
+SET SQL_SAFE_UPDATES = 0;
+UPDATE Movie M
+SET year = year + 25
+WHERE M.mID in
+(SELECT mID FROM Rating R
+GROUP BY mID
+HAVING avg(stars) >= 4)

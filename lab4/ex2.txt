@@ -1,0 +1,5 @@
+USE userdb;
+INSERT INTO Rating(rID, mID, stars, ratingDate)
+SELECT (SELECT rID FROM Reviewer WHERE name = 'James Cameron'), mID, 5, NULL
+FROM Movie;
+

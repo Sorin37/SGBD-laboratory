@@ -1,0 +1,5 @@
+SELECT M.title, MAX(R.stars) from userdb.Movie M
+INNER JOIN userdb.Rating R ON R.mID = M.mID
+INNER JOIN userdb.Reviewer P ON R.rID = P.rID
+GROUP BY M.title
+ORDER BY M.title

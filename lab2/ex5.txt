@@ -1,0 +1,6 @@
+SELECT P.name, M.title, R.stars, R.ratingDate FROM userdb.Rating R
+INNER JOIN userdb.Movie M
+ON M.mID = R.mID
+INNER JOIN userdb.Reviewer P
+ON P.rID = R.rID
+ORDER BY P.name, R.stars;

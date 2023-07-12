@@ -1,0 +1,7 @@
+(\project_{name}Frequents)
+	\diff (
+		\project_{name}Frequents 
+		\intersect 
+		(\project_{name}\select_{pizzeria = "Dominos"}Frequents)
+	)
+;

@@ -1,0 +1,8 @@
+USE userdb;
+SELECT H.name FROM
+(
+	SELECT L.ID2 FROM Likes L
+	GROUP BY L.ID2
+	HAVING COUNT(L.ID2) > 1
+) popular
+INNER JOIN Highschooler H ON H.ID = popular.ID2

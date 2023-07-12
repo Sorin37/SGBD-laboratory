@@ -1,0 +1,7 @@
+SELECT Reviewer.name 
+FROM userdb.Movie INNER JOIN userdb.Rating
+ON Movie.mID = Rating.mID
+INNER JOIN userdb.Reviewer 
+ON Rating.rID = Reviewer.rID
+WHERE ratingDate is null
+GROUP BY Reviewer.name;

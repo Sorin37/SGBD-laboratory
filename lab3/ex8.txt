@@ -1,0 +1,2 @@
+USE userdb;
+SELECT COUNT(H.name) - COUNT(DISTINCT H.name) FROM Highschooler H

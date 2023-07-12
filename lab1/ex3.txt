@@ -1,0 +1,6 @@
+\project_{pizzeria}
+(
+	\select_{price < 10 and (name2='Amy' or name2='Fay')} 
+	(Serves \join_{pizza=pizza2} \rename_{name2, pizza2} Eats)
+)
+;

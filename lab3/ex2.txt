@@ -1,0 +1,5 @@
+USE userdb;
+SELECT Lover.*, Loved.* FROM Likes L
+INNER JOIN Highschooler Lover ON L.ID1 = Lover.ID 
+INNER JOIN Highschooler Loved ON L.ID2 = Loved.ID
+WHERE Lover.grade - Loved.grade >= 2

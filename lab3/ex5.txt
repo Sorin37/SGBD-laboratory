@@ -1,0 +1,5 @@
+USE userdb;
+SELECT H1.name, H1.grade, H2.name, H2.grade FROM Likes L
+INNER JOIN Highschooler H1 ON L.ID1 = H1.ID
+INNER JOIN Highschooler H2 ON L.ID2 = H2.ID
+WHERE L.ID2 NOT IN (SELECT Likes.ID1 FROM Likes)

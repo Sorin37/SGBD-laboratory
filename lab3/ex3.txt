@@ -1,0 +1,9 @@
+USE userdb;
+SELECT H1.name, H2.name FROM
+(
+	SELECT Lover.* FROM Likes Lover, Likes Loved
+	WHERE Lover.ID1 = Loved.ID2 AND Lover.ID2 = Loved.ID1
+)TrueLove
+INNER JOIN Highschooler H1 ON TrueLove.ID1 = H1.ID
+INNER JOIN Highschooler H2 ON TrueLove.ID2 = H2.ID
+WHERE H1.name < H2.name

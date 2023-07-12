@@ -1,0 +1,13 @@
+SELECT avg(pre.avg) - avg(post.avg) AS avg FROM
+(SELECT M.title, avg(R.stars) AS avg
+FROM userdb.Movie M
+INNER JOIN userdb.Rating R ON M.mID = R.mID
+INNER JOIN userdb.Reviewer P ON P.rID = R.rID
+WHERE M.year < 1980
+GROUP BY M.title) AS pre,
+(SELECT M.title, avg(R.stars) AS avg
+FROM userdb.Movie M
+INNER JOIN userdb.Rating R ON M.mID = R.mID
+INNER JOIN userdb.Reviewer P ON P.rID = R.rID
+WHERE M.year > 1980
+GROUP BY M.title) AS post
